@@ -1,9 +1,9 @@
 {
-  "__comment": "Developep by @marichu_kt",
+  "__comment": "Developed by @marichu_kt, hugo-guarido-dominguez, vittorio-perillo, josealejandro-viveros, ignacio-perez-de-aviles, david-alfageme-sandoval y miguelangel-espinosadelosmonteros-osuna. GitHub Repo --> 'PrivScore_Sprints' ",
   "manifest_version": 3,
   "name": "PrivScore Web",
   "version": "0.1.0",
-  "description": "Califica la privacidad de la web actual (Aâ€“E) usando cookies + polÃ­tica de privacidad/cookies.",
+  "description": "Califica la privacidad de la web actual (A-E) usando política de privacidad/cookies.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
