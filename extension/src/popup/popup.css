@@ -1,5 +1,5 @@
 :root{
-  --bg:#f7f1e3; /* âœ… cambiado a crema */
+  --bg:#f7f1e3; /* ✅ cambiado a crema */
   --card:#ffffff;
   --border:#e5e7eb;
   --muted:rgba(0,0,0,.65);
@@ -53,7 +53,7 @@ body{
 
 .heroLabel .labelTop{ margin:0; }
 
-/* TÃ­tulo PRIVSCORE por segmentos (PR/IV/S/CO/RE) con contorno gris */
+/* Título PRIVSCORE por segmentos (PR/IV/S/CO/RE) con contorno gris */
 .labelTop span{
   display:inline-block;
   -webkit-text-stroke: 2px #4b5563;
@@ -68,7 +68,6 @@ body{
 .labelTop .tC{ color:#f9d423; }
 .labelTop .tD{ color:#f39c12; }
 .labelTop .tE{ color:#e74c3c; }
-/* Developep by @marichu_kt */
 
 .gradebar{
   position:relative;
@@ -88,7 +87,7 @@ body{
   color:rgba(255,255,255,.42);
 }
 
-/* Letras Aâ€“E (estilo Nutri): visibles pero no dominan */
+/* Letras A–E (estilo Nutri): visibles pero no dominan */
 .seg span{
   display:inline-block;
   font-weight:900;
@@ -151,7 +150,7 @@ body{
   min-height:18px;
 }
 
-/* From Uiverse.io by vinodjangid07 â€” adapted */
+/* From Uiverse.io by vinodjangid07 — adapted */
 .button{
   width:fit-content;
   height:56px;
@@ -298,4 +297,25 @@ body{
   padding:10px 12px;
   font-weight:800;
   cursor:pointer;
+}
+
+.btnPrimary{
+  width:100%;
+  border:none;
+  background:#22c55e;
+  color:#111;
+  border-radius:14px;
+  padding:12px;
+  font-weight:900;
+  cursor:pointer;
+  font-size:14px;
+  transition:all .2s;
+}
+
+.btnPrimary:hover{
+  background:#4ade80;
+}
+
+.btnPrimary:active{
+  transform:scale(.98);
 }

@@ -14,7 +14,6 @@ const scoreEl = document.getElementById("score");
 const bulletsEl = document.getElementById("bullets");
 
 const detailBtn = document.getElementById("detailBtn");
-const copyBtn = document.getElementById("copyBtn");
 
 function setStatus(msg) {
   statusEl.textContent = msg || "";
@@ -24,7 +23,7 @@ function setLoading(isLoading) {
   analyzeBtn.disabled = isLoading;
 
   if (isLoading) {
-    btnTextEl.textContent = "Analizandoâ€¦";
+    btnTextEl.textContent = "Analizando…";
     loadingCardEl.classList.remove("hidden");
     resultEl.classList.add("hidden");
   } else {
@@ -34,12 +33,12 @@ function setLoading(isLoading) {
 }
 
 function setTopCollapsed(collapsed) {
-  // Tras analizar con Ã©xito, ocultamos el hero + botÃ³n para dejar solo el resultado.
+  // Tras analizar con éxito, ocultamos el hero + botón para dejar solo el resultado.
   if (collapsed) topAreaEl.classList.add("hidden");
   else topAreaEl.classList.remove("hidden");
 }
 
-function safeText(x, fallback = "â€”") {
+function safeText(x, fallback = "—") {
   if (x === null || x === undefined) return fallback;
   const s = String(x).trim();
   return s.length ? s : fallback;
@@ -54,12 +53,12 @@ function emojiForBullet(text) {
   const t = (text || "").toLowerCase();
 
   // Alto riesgo
-  if (t.includes("venta") || t.includes("monetiz") || t.includes("vendemos") || t.includes("sell")) return "ðŸ›‘";
+  if (t.includes("venta") || t.includes("monetiz") || t.includes("vendemos") || t.includes("sell")) return "🛑";
 
   // Cookies/info
-  if (t.includes("cookie")) return "ðŸª";
+  if (t.includes("cookie")) return "🍪";
 
-  // Positivo (solo si no hay negaciÃ³n cerca)
+  // Positivo (solo si no hay negación cerca)
   const hasNeg =
     t.includes("no ") ||
     t.includes("sin ") ||
@@ -67,12 +66,12 @@ function emojiForBullet(text) {
     t.includes("no permite") ||
     t.includes("no mencion") ||
     t.includes("no hay") ||
-    t.includes("sin opciÃ³n") ||
+    t.includes("sin opción") ||
     t.includes("sin opcion");
 
   if (!hasNeg) {
-    if (t.includes("derechos") || t.includes("borrado") || t.includes("acceso") || t.includes("portabil")) return "âœ…";
-    if (t.includes("permite rechazar") || (t.includes("permite") && t.includes("rechazar"))) return "âœ…";
+    if (t.includes("derechos") || t.includes("borrado") || t.includes("acceso") || t.includes("portabil")) return "✅";
+    if (t.includes("permite rechazar") || (t.includes("permite") && t.includes("rechazar"))) return "✅";
   }
 
   // Medio / avisos
@@ -89,10 +88,10 @@ function emojiForBullet(text) {
     t.includes("banner") ||
     t.includes("consent")
   ) {
-    return "âš ï¸";
+    return "⚠️";
   }
 
-  return "â„¹ï¸";
+  return "ℹ️";
 }
 
 function renderBullets(bullets) {
@@ -122,16 +121,16 @@ function renderBullets(bullets) {
 function renderResult(res) {
   resultEl.classList.remove("hidden");
 
-  const grade = safeText(res.grade, "â€”");
+  const grade = safeText(res.grade, "—");
   const score = Number.isFinite(res.score) ? res.score : null;
 
-  // Barra Aâ€“E
+  // Barra A–E
   gradeBarEl.dataset.grade = ["A", "B", "C", "D", "E"].includes(grade) ? grade : "unknown";
   gradeMarkerEl.textContent = ["A", "B", "C", "D", "E"].includes(grade) ? grade : "?";
 
   // Meta
   siteEl.textContent = safeText(res.host);
-  scoreEl.textContent = score === null ? "â€”" : `${score}/100`;
+  scoreEl.textContent = score === null ? "—" : `${score}/100`;
 
   // Bullets
   renderBullets(res.bullets);
@@ -147,16 +146,15 @@ async function analyzeCurrentTab() {
 
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (!tab || !tab.id || !tab.url) throw new Error("No se pudo obtener la pestaÃ±a activa.");
+    if (!tab || !tab.id || !tab.url) throw new Error("No se pudo obtener la pestaña activa.");
 
     const res = await chrome.runtime.sendMessage({
       type: "ANALYZE_TAB",
       tabId: tab.id,
       url: tab.url
     });
-// Developep by @marichu_kt
 
-    if (!res || typeof res !== "object") throw new Error("Respuesta invÃ¡lida del analizador.");
+    if (!res || typeof res !== "object") throw new Error("Respuesta inválida del analizador.");
 
     renderResult(res);
   } catch (e) {
@@ -173,22 +171,6 @@ analyzeBtn.addEventListener("click", analyzeCurrentTab);
 detailBtn.addEventListener("click", () => {
   // Abre la vista detalle (lee lastReport desde storage.local)
   chrome.tabs.create({ url: chrome.runtime.getURL("src/detail/detail.html") });
-});
-
-copyBtn.addEventListener("click", async () => {
-  try {
-    const site = siteEl.textContent || "";
-    const score = scoreEl.textContent || "";
-    const lines = Array.from(bulletsEl.querySelectorAll(".txt")).map((n) => `- ${n.textContent}`);
-    const text = `PrivScore\n${site}\n${score}\n\n${lines.join("\n")}`.trim();
-
-    await navigator.clipboard.writeText(text);
-    copyBtn.textContent = "Copiado";
-    setTimeout(() => (copyBtn.textContent = "Copiar"), 900);
-  } catch (e) {
-    console.error(e);
-    setStatus("No se pudo copiar.");
-  }
 });
 
 // Estado inicial

@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="detail.css" />
-    <title>PrivScore â€” Detalle</title>
+    <title>PrivScore — Detalle</title>
   </head>
   <body>
     <div class="page">
       <header class="top">
         <div>
           <div class="brand">PrivScore</div>
-          <div id="subtitle" class="subtitle">Detalle del Ãºltimo anÃ¡lisis</div>
+          <div id="subtitle" class="subtitle">Detalle del último análisis</div>
         </div>
         <div class="topActions">
           <button id="copyTextBtn" class="btn">Copiar</button>
@@ -22,27 +22,27 @@
 
       <section id="empty" class="card hidden">
         <h2>No hay reporte</h2>
-        <p>Abre el popup de la extensiÃ³n y pulsa <b>Analizar esta web</b> para generar un reporte.</p>
+        <p>Abre el popup de la extensión y pulsa <b>Analizar esta web</b> para generar un reporte.</p>
       </section>
 
       <section id="main" class="grid hidden">
         <div class="card">
           <div class="row">
             <div class="left">
-              <div id="host" class="host">â€”</div>
+              <div id="host" class="host">—</div>
               <div class="meta">
-                <span id="when">â€”</span>
-                <span class="dot">â€¢</span>
+                <span id="when">—</span>
+                <span class="dot">•</span>
                 <a id="openUrl" href="#" target="_blank" rel="noreferrer">Abrir web</a>
-                <span class="dot">â€¢</span>
-                <a id="openPolicy" href="#" target="_blank" rel="noreferrer">PolÃ­tica</a>
+                <span class="dot">•</span>
+                <a id="openPolicy" href="#" target="_blank" rel="noreferrer">Política</a>
               </div>
             </div>
             <div class="right">
-              <div id="score" class="score">â€”</div>
+              <div id="score" class="score">—</div>
               <div class="pillRow">
-                <span id="modePill" class="pill">â€”</span>
-                <span id="confPill" class="pill">â€”</span>
+                <span id="modePill" class="pill">—</span>
+                <span id="confPill" class="pill">—</span>
                 <span id="estPill" class="pill pillEst hidden">Estimado</span>
               </div>
             </div>
@@ -67,25 +67,25 @@
             <div class="barRow">
               <div class="label">Trackers</div>
               <div class="bar"><div id="bTrackers" class="fill"></div></div>
-              <div id="tTrackers" class="val">â€”</div>
+              <div id="tTrackers" class="val">—</div>
             </div>
             <div class="barRow">
               <div class="label">Terceros</div>
               <div class="bar"><div id="bThird" class="fill"></div></div>
-              <div id="tThird" class="val">â€”</div>
+              <div id="tThird" class="val">—</div>
             </div>
             <div class="barRow">
-              <div class="label">RetenciÃ³n</div>
+              <div class="label">Retención</div>
               <div class="bar"><div id="bRet" class="fill"></div></div>
-              <div id="tRet" class="val">â€”</div>
+              <div id="tRet" class="val">—</div>
             </div>
             <div class="barRow">
               <div class="label">Derechos</div>
               <div class="bar"><div id="bRights" class="fill"></div></div>
-              <div id="tRights" class="val">â€”</div>
+              <div id="tRights" class="val">—</div>
             </div>
           </div>
-          <p class="note">La IA (si estÃ¡ activa) solo ayuda a extraer seÃ±ales del texto. La nota siempre sale del scoring determinista.</p>
+          <p class="note">La IA (si está activa) solo ayuda a extraer señales del texto. La nota siempre sale del scoring determinista.</p>
         </div>
 
         <div class="card">
@@ -98,38 +98,43 @@
           <div class="evi">
             <div class="eRow">
               <div class="eK">Venta</div>
-              <div id="eSale" class="eV">â€”</div>
+              <div id="eSale" class="eV">—</div>
             </div>
             <div class="eRow">
               <div class="eK">Terceros</div>
-              <div id="eThird" class="eV">â€”</div>
+              <div id="eThird" class="eV">—</div>
             </div>
             <div class="eRow">
               <div class="eK">Ads/Tracking</div>
-              <div id="eAds" class="eV">â€”</div>
+              <div id="eAds" class="eV">—</div>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <h2>TÃ©cnico</h2>
+          <details class="techDetails">
+            <summary>Técnico</summary>
+
+            <div class="techContent">
 
           <div class="kv">
             <div class="k">Cookies</div>
-            <div id="cookies" class="v">â€”</div>
+            <div id="cookies" class="v">—</div>
 
             <div class="k">Top dominios cookie</div>
-            <div id="cookieDomains" class="v">â€”</div>
-<!-- Developep by @marichu_kt -->
+            <div id="cookieDomains" class="v">—</div>
 
-            <div class="k">Terceros en pÃ¡gina</div>
-            <div id="thirdParty" class="v">â€”</div>
+            <div class="k">Terceros en página</div>
+            <div id="thirdParty" class="v">—</div>
 
             <div class="k">Storage tracking</div>
-            <div id="storage" class="v">â€”</div>
+            <div id="storage" class="v">—</div>
 
             <div class="k">CMP</div>
-            <div id="cmp" class="v">â€”</div>
+            <div id="cmp" class="v">—</div>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
       </section>

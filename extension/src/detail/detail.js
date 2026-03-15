@@ -196,4 +196,4 @@ el("copyTextBtn").addEventListener("click", () => copyText().catch(console.error
 el("copyJsonBtn").addEventListener("click", () => copyJson().catch(console.error));
 
 load();
-// Developep by @marichu_kt
+// Developed by @marichu_kt
